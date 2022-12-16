@@ -1,4 +1,4 @@
-nums = list(map(int, open('17.txt').readlines()))
+nums = list(map(int, open('37336.txt').readlines()))
 count = 0
 maxSum = 0
 for i in range(len(nums) - 1):

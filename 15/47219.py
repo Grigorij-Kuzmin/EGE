@@ -1,4 +1,3 @@
-count = 0
 for a in range(1, 100):
     f = True
     for x in range(1, 100):

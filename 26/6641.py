@@ -14,7 +14,7 @@ with open('26_6641.txt') as f:
         m = max((len(a), len(b)))
     for i in range(m):
         while x < 395200:
-            if int(a[i]) <= int(b[i]):
+            if int(a[i]) >= int(b[i]):
                 count += 1
                 x += int(a[i])
             else:

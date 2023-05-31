@@ -1,22 +1,31 @@
-a = []
-b = []
-x = 0
-count = 0
-with open('26_6641.txt') as f:
-    lines = f.readlines()
-    for line in lines:
-        if line.find('S') != -1:
-            a.append(line[:-2])
-        else:
-            b.append(line[:-2])
-        a.sort()
-        b.sort()
-        m = max((len(a), len(b)))
-    for i in range(m):
-        while x < 395200:
-            if int(a[i]) >= int(b[i]):
-                count += 1
-                x += int(a[i])
-            else:
-                x += int(b[i])
-print(count, x - 395200)
+f = open('6641.txt')
+n, m = map(int, f.readline().split())
+
+products = []
+w_products = []
+s_count = 0
+
+for i in range(n):
+    a, b = f.readline().split()
+    products.append([int(a), b])
+
+products.sort()
+
+i = 0
+while m >= products[i][0] and i < n:
+    m -= products[i][0]
+    if products[i][1] == 'S':
+        s_count += 1
+    if products[i][1] == 'W':
+        w_products.append(products[i][0])
+    i += 1
+
+k = -1
+while (w_products[k] + m) >= products[i][0] and i < n:
+    if products[i][1] == 'S':
+        m -= products[i][0] - w_products[k]
+        k -= 1
+        s_count += 1
+    i += 1
+
+print(s_count, m)
